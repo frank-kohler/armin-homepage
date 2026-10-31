@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="dark">
   <title>NAHTLOS – Sexy Herrenunterwäsche</title>
   <meta name="description" content="NAHTLOS: Sexy Unterwäsche für Herren in Neonfarben. Jocks, Mesh-Trunks, Strings und Briefs.">
@@ -20,13 +20,16 @@
       --violet: #8b3dff;
     }
     * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+    body { overflow-x: clip; display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; }
+    main { flex: 1 0 auto; }
+    .bund, footer { flex-shrink: 0; }
     body {
       margin: 0;
       background:
         radial-gradient(60rem 30rem at 85% -5%, rgba(139,61,255,.35), transparent 70%),
         radial-gradient(50rem 28rem at -10% 35%, rgba(255,45,149,.18), transparent 70%),
         var(--bg);
-      background-attachment: fixed;
       color: var(--text);
       font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
       line-height: 1.6;
@@ -38,23 +41,11 @@
     .bund {
       background: linear-gradient(90deg, var(--pink), var(--violet), var(--cyan), var(--lime), var(--orange), var(--pink));
       color: var(--bg);
-      overflow: hidden;
-      white-space: nowrap;
-      font-weight: 800;
-      letter-spacing: 0.45em;
-      font-size: 0.8rem;
-      padding: 0.55rem 0;
-      user-select: none;
+      height: 1.9rem;
     }
-    .bund span { margin-right: 1.6em; }
 
-    .wrap { width: 100%; max-width: 68rem; margin: 0 auto; padding: 0 1.5rem; }
+    .wrap { width: 100%; max-width: 68rem; margin: 0 auto; padding: 0 max(1.5rem, env(safe-area-inset-right)) 0 max(1.5rem, env(safe-area-inset-left)); }
 
-    nav { display: flex; justify-content: space-between; align-items: baseline; padding: 1.25rem 0; }
-    .logo { font-weight: 800; letter-spacing: 0.2em; text-decoration: none; font-size: 1.1rem; color: var(--cyan); text-shadow: 0 0 .6em rgba(25,230,255,.7); }
-    nav ul { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; font-size: 0.95rem; }
-    nav ul a { text-decoration: none; }
-    nav ul a:hover { color: var(--pink); text-shadow: 0 0 .6em rgba(255,45,149,.8); }
 
     /* Hero */
     .hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; padding: 3.5rem 0 5rem; }
@@ -68,21 +59,6 @@
       text-shadow: 0 0 .15em #ff7ac0, 0 0 .4em var(--pink), 0 0 .9em var(--pink);
     }
     .hero p { font-size: 1.15rem; max-width: 30rem; margin: 0 0 2rem; color: var(--muted); }
-    .btn {
-      display: inline-block;
-      background: var(--pink);
-      color: var(--bg);
-      font-weight: 800;
-      padding: 0.85rem 1.6rem;
-      border: 0;
-      border-radius: 999px;
-      text-decoration: none;
-      font-size: 1rem;
-      cursor: pointer;
-      font-family: inherit;
-      box-shadow: 0 0 1.2rem rgba(255,45,149,.6);
-    }
-    .btn:hover { background: #ff5cae; }
 
     /* Muster im Hero */
     .muster { position: relative; height: 22rem; }
@@ -94,22 +70,7 @@
     .m3 { width: 60%; height: 52%; left: 22%; bottom: 0; transform: rotate(-1.5deg);
       background: radial-gradient(circle, var(--bg) 0 2px, transparent 2.5px) 0 0 / 9px 9px, var(--cyan); box-shadow: 0 0 2.5rem rgba(25,230,255,.5); }
 
-    /* Kollektion */
     section { padding: 3.5rem 0; }
-    h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -0.03em; line-height: 1.1; margin: 0 0 0.5rem; font-weight: 800; }
-    .lead { color: var(--muted); margin: 0 0 2.5rem; max-width: 34rem; }
-    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-    .produkt { background: var(--panel); padding: 0.75rem 0.75rem 1.1rem; border-radius: 1.2rem; border: 1px solid rgba(255,255,255,.08); }
-    .produkt .stoff { aspect-ratio: 4 / 5; border-radius: 0.8rem; border: 2px dashed rgba(255,255,255,.7); margin-bottom: 1rem; }
-    .s1 { background: linear-gradient(135deg, var(--pink), var(--violet)); box-shadow: 0 0 1.5rem rgba(255,45,149,.4); }
-    .s2 { background: radial-gradient(circle, var(--bg) 0 2px, transparent 2.5px) 0 0 / 8px 8px, var(--cyan); box-shadow: 0 0 1.5rem rgba(25,230,255,.4); }
-    .s3 { background: repeating-linear-gradient(45deg, var(--orange) 0 12px, #ffe14a 12px 24px); box-shadow: 0 0 1.5rem rgba(255,122,26,.4); }
-    .s4 { background: linear-gradient(110deg, transparent 38%, rgba(255,255,255,.55) 47%, transparent 56%), linear-gradient(160deg, var(--lime), #12c47c); box-shadow: 0 0 1.5rem rgba(182,255,60,.35); }
-    .produkt h3 { margin: 0 0.35rem; font-size: 1.1rem; }
-    .produkt .art { margin: 0 0.35rem 0.4rem; color: var(--muted); font-size: 0.92rem; }
-    .produkt .preis { font-weight: 800; margin: 0 0.35rem 0.9rem; }
-    .produkt .btn { margin-left: 0.35rem; padding: 0.55rem 1.1rem; font-size: 0.9rem; background: transparent; color: var(--cyan); border: 2px solid var(--cyan); box-shadow: 0 0 .9rem rgba(25,230,255,.35); }
-    .produkt .btn:hover { background: var(--cyan); color: var(--bg); }
 
     /* Versprechen */
     .versprechen .wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
@@ -121,7 +82,7 @@
     .versprechen p { margin: 0; color: var(--muted); }
 
     footer { padding: 2rem 1.5rem; text-align: center; font-size: 0.8rem; color: var(--muted); }
-    footer a { text-decoration: underline; }
+    footer a { display: inline-block; padding: 0.5rem 0.75rem; text-decoration: underline; }
     footer a:hover { color: var(--cyan); }
 
     @media (prefers-reduced-motion: no-preference) {
@@ -134,79 +95,25 @@
     @media (max-width: 52rem) {
       .hero { grid-template-columns: 1fr; padding-top: 2rem; }
       .muster { height: 18rem; }
-      .grid { grid-template-columns: repeat(2, 1fr); }
       .versprechen .wrap { grid-template-columns: 1fr; }
     }
     @media (max-width: 30rem) {
-      nav ul { display: none; }
-      .grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <div class="bund" aria-hidden="true">
-    <span>NAHTLOS</span><span>NAHTLOS</span><span>NAHTLOS</span><span>NAHTLOS</span><span>NAHTLOS</span><span>NAHTLOS</span><span>NAHTLOS</span><span>NAHTLOS</span><span>NAHTLOS</span><span>NAHTLOS</span><span>NAHTLOS</span><span>NAHTLOS</span><span>NAHTLOS</span><span>NAHTLOS</span>
-  </div>
-
-  <header class="wrap">
-    <nav aria-label="Hauptmenü">
-      <a class="logo" href="index.html">NAHTLOS</a>
-      <ul>
-        <li><a href="#kollektion">Kollektion</a></li>
-        <li><a href="#versprechen">Material</a></li>
-        <li><a href="#">Warenkorb (0)</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div class="bund" aria-hidden="true"></div>
 
   <main>
     <div class="wrap hero">
       <div>
         <h1>Für Abende, die länger dauern.</h1>
         <p>Sexy Herrenunterwäsche in Neonfarben: knapp geschnitten, hautnah und gemacht, um gesehen zu werden.</p>
-        <a class="btn" href="#kollektion">Kollektion ansehen</a>
       </div>
       <div class="muster" aria-hidden="true">
         <i class="m1"></i><i class="m2"></i><i class="m3"></i>
       </div>
     </div>
-
-    <section id="kollektion">
-      <div class="wrap">
-        <h2>Die Kollektion</h2>
-        <p class="lead">Vier Styles, jeder in mehreren Farben erhältlich.</p>
-        <div class="grid">
-          <article class="produkt">
-            <div class="stoff s1" role="img" aria-label="Pinker Farbverlauf zu Violett"></div>
-            <h3>Jock Magenta</h3>
-            <p class="art">Offener Rücken, breiter Bund</p>
-            <p class="preis">29,90 €</p>
-            <button class="btn" type="button">In den Warenkorb</button>
-          </article>
-          <article class="produkt">
-            <div class="stoff s2" role="img" aria-label="Cyanfarbenes Mesh-Gewebe"></div>
-            <h3>Mesh Trunk Cyan</h3>
-            <p class="art">Transparent, extra leicht</p>
-            <p class="preis">27,90 €</p>
-            <button class="btn" type="button">In den Warenkorb</button>
-          </article>
-          <article class="produkt">
-            <div class="stoff s3" role="img" aria-label="Orange-gelbes Streifenmuster"></div>
-            <h3>Mini Brief Sunset</h3>
-            <p class="art">Tief sitzend, knapper Schnitt</p>
-            <p class="preis">24,90 €</p>
-            <button class="btn" type="button">In den Warenkorb</button>
-          </article>
-          <article class="produkt">
-            <div class="stoff s4" role="img" aria-label="Glänzendes neongrünes Gewebe"></div>
-            <h3>Wetlook Lime</h3>
-            <p class="art">Glänzend, eng anliegend</p>
-            <p class="preis">32,90 €</p>
-            <button class="btn" type="button">In den Warenkorb</button>
-          </article>
-        </div>
-      </div>
-    </section>
 
     <section class="versprechen" id="versprechen">
       <div class="wrap">
