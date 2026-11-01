@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="dark">
-  <title>NAHTLOS – Sexy Herrenunterwäsche</title>
-  <meta name="description" content="NAHTLOS: Sexy Unterwäsche für Herren in Neonfarben. Jocks, Mesh-Trunks, Strings und Briefs.">
+  <title>Black Label Online – Lust auf neue Underwear?</title>
+  <meta name="description" content="Black Label Online: Sexy Herrenunterwäsche in Neonfarben. Lust auf neue Underwear?">
   <style>
     :root {
       color-scheme: dark;
@@ -34,6 +34,22 @@
       font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
       line-height: 1.6;
     }
+    /* Foto als Vollbild-Hintergrund; Gesicht oben rechts, Wäsche unten links */
+    :root { --foto-h: min(50vh, 100vw); }
+    @supports (height: 1dvh) { :root { --foto-h: min(50dvh, 100vw); } }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 1.9rem;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      background:
+        radial-gradient(ellipse 60vw 45vh at 0 0, rgba(20,6,31,.85), rgba(20,6,31,0)),
+        url("roter-Hintergrund.jpeg") 15% 40% / cover no-repeat;
+      filter: brightness(1.08);
+    }
     a { color: inherit; }
     :focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
 
@@ -48,41 +64,33 @@
 
 
     /* Hero */
-    .hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; padding: 3.5rem 0 5rem; }
+    .hero { padding-top: clamp(4.5rem, 14vw, 9rem); padding-bottom: clamp(4rem, 10vw, 7rem); }
+    .hero > div { max-width: 34rem; }
+    .marke { font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase; font-size: 1rem; color: var(--cyan); text-shadow: 0 0 .6em rgba(25,230,255,.7); margin-bottom: 1.25rem; }
     h1 {
-      font-size: clamp(2.6rem, 7vw, 5rem);
+      font-size: clamp(2.4rem, 7vw, 4.5rem);
       line-height: 0.98;
       letter-spacing: -0.04em;
       font-weight: 800;
-      margin: 0 0 1.25rem;
+      margin: 0;
       color: #ffe3f2;
       text-shadow: 0 0 .15em #ff7ac0, 0 0 .4em var(--pink), 0 0 .9em var(--pink);
     }
-    .hero p { font-size: 1.15rem; max-width: 30rem; margin: 0 0 2rem; color: var(--muted); }
-
-    /* Muster im Hero */
-    .muster { position: relative; height: 22rem; }
-    .muster i { position: absolute; display: block; border: 2px dashed rgba(255,255,255,.75); border-radius: 1.2rem; }
-    .m1 { width: 60%; height: 66%; left: 0; top: 4%; transform: rotate(-6deg);
-      background: linear-gradient(135deg, var(--pink), var(--violet)); box-shadow: 0 0 2.5rem rgba(255,45,149,.5); }
-    .m2 { width: 56%; height: 58%; right: 2%; top: 0; transform: rotate(5deg);
-      background: repeating-linear-gradient(45deg, var(--orange) 0 14px, #ffe14a 14px 28px); box-shadow: 0 0 2.5rem rgba(255,122,26,.45); }
-    .m3 { width: 60%; height: 52%; left: 22%; bottom: 0; transform: rotate(-1.5deg);
-      background: radial-gradient(circle, var(--bg) 0 2px, transparent 2.5px) 0 0 / 9px 9px, var(--cyan); box-shadow: 0 0 2.5rem rgba(25,230,255,.5); }
-
-    section { padding: 3.5rem 0; }
-
-    /* Versprechen */
-    .versprechen .wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-    .versprechen .punkt { padding-top: 1rem; border-top: 4px solid; }
-    .versprechen .punkt:nth-child(1) { border-color: var(--pink); }
-    .versprechen .punkt:nth-child(2) { border-color: var(--cyan); }
-    .versprechen .punkt:nth-child(3) { border-color: var(--lime); }
-    .versprechen h3 { margin: 0 0 0.4rem; font-size: 1.2rem; }
-    .versprechen p { margin: 0; color: var(--muted); }
+    .btn {
+      display: inline-block;
+      margin-top: 1.75rem;
+      background: var(--pink);
+      color: var(--bg);
+      font-weight: 800;
+      padding: 0.85rem 1.6rem;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 0 1.2rem rgba(255,45,149,.6);
+    }
+    .btn:hover { background: #ff5cae; }
 
     footer { padding: 2rem 1.5rem; text-align: center; font-size: 0.8rem; color: var(--muted); }
-    footer a { display: inline-block; padding: 0.5rem 0.75rem; text-decoration: underline; }
+    footer a { text-shadow: 0 0 .6em rgba(20,6,31,.95), 0 1px 3px rgba(0,0,0,.9); display: inline-block; padding: 0.5rem 0.75rem; text-decoration: underline; }
     footer a:hover { color: var(--cyan); }
 
     @media (prefers-reduced-motion: no-preference) {
@@ -92,12 +100,25 @@
         38% { opacity: .5; } 46%, 100% { opacity: 1; }
       }
     }
-    @media (max-width: 52rem) {
-      .hero { grid-template-columns: 1fr; padding-top: 2rem; }
-      .muster { height: 18rem; }
-      .versprechen .wrap { grid-template-columns: 1fr; }
+    /* Hochformat (Handy): Text oben, Foto unten */
+    @media (max-aspect-ratio: 1/1) {
+      body::before {
+        top: auto;
+        left: auto;
+        height: var(--foto-h);
+        width: min(100%, calc(var(--foto-h) * 1.2));
+        background: url("roter-Hintergrund.jpeg") 8% 50% / cover no-repeat;
+        -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 22%), linear-gradient(90deg, transparent 0, #000 6%);
+        -webkit-mask-composite: source-in;
+        mask-image: linear-gradient(180deg, transparent 0, #000 22%), linear-gradient(90deg, transparent 0, #000 6%);
+        mask-composite: intersect;
+      }
     }
-    @media (max-width: 30rem) {
+    /* Querformat: Text schmal links oben, im freien Bereich neben dem Model */
+    @media (min-aspect-ratio: 1/1) {
+      .hero { max-width: none; margin: 0; padding-left: max(4vw, env(safe-area-inset-left)); padding-top: clamp(3rem, 6vh, 5rem); }
+      .hero > div { max-width: min(30vw, 30rem); }
+      h1 { font-size: clamp(2.2rem, 3.8vw, 4.5rem); }
     }
   </style>
 </head>
@@ -107,30 +128,11 @@
   <main>
     <div class="wrap hero">
       <div>
-        <h1>Für Abende, die länger dauern.</h1>
-        <p>Sexy Herrenunterwäsche in Neonfarben: knapp geschnitten, hautnah und gemacht, um gesehen zu werden.</p>
-      </div>
-      <div class="muster" aria-hidden="true">
-        <i class="m1"></i><i class="m2"></i><i class="m3"></i>
+        <div class="marke">Black Label Online</div>
+        <h1>Lust auf neue Underwear?</h1>
+        <a class="btn" href="https://www.ebay.de/str/blacklabelonline" target="_blank" rel="noopener noreferrer">Zum eBay-Shop</a>
       </div>
     </div>
-
-    <section class="versprechen" id="versprechen">
-      <div class="wrap">
-        <div class="punkt">
-          <h3>Weich auf der Haut</h3>
-          <p>Elastische Mikrofaser mit Modal-Anteil. Sitzt eng, ohne einzuschneiden.</p>
-        </div>
-        <div class="punkt">
-          <h3>Diskrete Lieferung</h3>
-          <p>Neutrale Verpackung, neutraler Absender. Nur du weißt, was drin ist.</p>
-        </div>
-        <div class="punkt">
-          <h3>30 Tage Rückgabe</h3>
-          <p>Passt nicht? Schick es zurück, wir erstatten den Kaufpreis.</p>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer>
